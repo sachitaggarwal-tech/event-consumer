@@ -26,7 +26,7 @@
 		<version.emjapi-api>1.5.0</version.emjapi-api>
 		<mockito-version>2.0.5-beta</mockito-version>
 		<powermock-version>1.6.2</powermock-version>
-		<version.spring>2.0.0.M5</version.spring>
+		<version.spring>2.0.0.M7</version.spring>
 	</properties>
 
 	<dependencies>
