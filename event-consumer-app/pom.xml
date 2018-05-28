@@ -26,7 +26,6 @@
 		<version.emjapi-api>1.5.0</version.emjapi-api>
 		<mockito-version>2.0.5-beta</mockito-version>
 		<powermock-version>1.6.2</powermock-version>
-		<version.spring>2.0.0.M7</version.spring>
 	</properties>
 
 	<dependencies>
@@ -57,13 +56,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${version.spring}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<version>${version.spring}</version>
+			<version>2.0.0.M7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
