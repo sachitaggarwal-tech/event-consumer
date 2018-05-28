@@ -1,0 +1,4 @@
+{
+    "xsappname": "uaa-persephone-events2",
+    "authorities":["$ACCEPT_GRANTED_AUTHORITIES"]
+}
