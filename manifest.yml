@@ -4,7 +4,7 @@ applications:
 - name: persephone-event-consumer
   host: persephone-event-consumer
   memory: 768M
-  path: event-consumer-app/target/event-consumer-app.jar
+  path: target/event-consumer-app.jar
   random-route: false
   services:
     # This must point to an existing `enterprise messaging` service instance
