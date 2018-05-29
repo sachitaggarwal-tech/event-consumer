@@ -24,10 +24,12 @@ public class ITMessageServiceTest {
 		
 		//wait
 		Thread.sleep(5000);
-		
-		//read message
 		response = handler.executeGetCall(TEST_URL, Collections.emptyMap());
-		Assert.assertTrue("After fresh deploy messages list not empty", response.contains("123"));
+		if(!response.contains("123")) {
+			Thread.sleep(5000);
+			response = handler.executeGetCall(TEST_URL, Collections.emptyMap());
+			Assert.assertTrue("No message recieved even after 10 seconds",response.contains("123"));
+		}
 	
 	}
 	
