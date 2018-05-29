@@ -79,7 +79,7 @@ public class DestinationAccessor {
 			String token = null;
 			if (responseBody != null) {
 				JSONObject json = new JSONObject(responseBody);
-				if (json != null && json.has(ACCESS_TOKEN)) { //$NON-NLS-1$
+				if (json.has(ACCESS_TOKEN)) { //$NON-NLS-1$
 					token = json.getString(ACCESS_TOKEN); //$NON-NLS-1$
 				}
 			}
@@ -142,7 +142,7 @@ public class DestinationAccessor {
 			if (response != null) {
 				logger.info("Got response");
 				JSONObject obj2 = new JSONObject(response);
-				if (obj2 != null && obj2.has(ACCESS_TOKEN)) {
+				if (obj2.has(ACCESS_TOKEN)) {
 					return obj2.getString(ACCESS_TOKEN);
 				}
 			}
