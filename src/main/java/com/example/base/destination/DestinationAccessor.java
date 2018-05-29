@@ -32,6 +32,8 @@ import org.springframework.web.client.RestTemplate;
  */
 public class DestinationAccessor {
 
+	private static final String ACCESS_TOKEN = "access_token";
+	private static final String AUTHORIZATION = "Authorization";
 	private String destinationEnv = System.getenv("VCAP_SERVICES");
 	private static final String URI = "uri"; //$NON-NLS-1$
 	private static final String DESTINATION = "destination"; //$NON-NLS-1$
@@ -68,7 +70,7 @@ public class DestinationAccessor {
 			// get JWT token for accessing destination API
 			String base64encodeAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes()); //$NON-NLS-1$
 			Map<String, String> headersMap = new HashMap<>();
-			headersMap.put("Authorization", "Basic " + base64encodeAuth); //$NON-NLS-1$ //$NON-NLS-2$
+			headersMap.put(AUTHORIZATION, "Basic " + base64encodeAuth); //$NON-NLS-1$ //$NON-NLS-2$
 			headersMap.put("content-type", "application/x-www-form-urlencoded"); //$NON-NLS-1$ //$NON-NLS-2$
 			Map<String, String> dataMap = new HashMap<>();
 			dataMap.put("client_id", clientId); //$NON-NLS-1$
@@ -77,8 +79,8 @@ public class DestinationAccessor {
 			String token = null;
 			if (responseBody != null) {
 				JSONObject json = new JSONObject(responseBody);
-				if (json != null && json.has("access_token")) { //$NON-NLS-1$
-					token = json.getString("access_token"); //$NON-NLS-1$
+				if (json != null && json.has(ACCESS_TOKEN)) { //$NON-NLS-1$
+					token = json.getString(ACCESS_TOKEN); //$NON-NLS-1$
 				}
 			}
 
@@ -90,7 +92,7 @@ public class DestinationAccessor {
 				String destinationPath = String.format(DESTINATION_SERVICE_PATH, destinationName);
 				String finalDestUri = destinationServiceUri + destinationPath;
 				headersMap = new HashMap<>();
-				headersMap.put("Authorization", "Bearer " + token); //$NON-NLS-1$ //$NON-NLS-2$
+				headersMap.put(AUTHORIZATION, "Bearer " + token); //$NON-NLS-1$ //$NON-NLS-2$
 				responseBody = executeGetCall(finalDestUri, headersMap);
 
 				if (responseBody != null) {
@@ -135,13 +137,13 @@ public class DestinationAccessor {
 			String cred = "Basic " + Base64.getEncoder().encodeToString((userName + ":" + password).getBytes());
 			Map<String, String> headersMap = new HashMap<>();
 			headersMap.put("Accept", "application/json");
-			headersMap.put("Authorization", cred);
+			headersMap.put(AUTHORIZATION, cred);
 			String response = executePostCall(url, headersMap, Collections.emptyMap());
 			if (response != null) {
 				logger.info("Got response");
 				JSONObject obj2 = new JSONObject(response);
-				if (obj2 != null && obj2.has("access_token")) {
-					return obj2.getString("access_token");
+				if (obj2 != null && obj2.has(ACCESS_TOKEN)) {
+					return obj2.getString(ACCESS_TOKEN);
 				}
 			}
 		}
