@@ -9,7 +9,7 @@ import com.example.base.utils.APIHandler;
 
 public class ITMessageServiceTest {
 
-	private static final String TEST_URL = "https://persephone-event-consumer.cfapps.eu10.hana.ondemand.com/messages";
+	private static final String TEST_URL = "https://persephone-event-consumer-test.cfapps.eu10.hana.ondemand.com/messages";
 
 	@Test
 	public void testSendRecieveMessage() throws InterruptedException {
